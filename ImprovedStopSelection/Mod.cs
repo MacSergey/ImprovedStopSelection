@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Resources;
 using UnityEngine;
 
 namespace ImprovedStopSelection
@@ -45,6 +46,7 @@ namespace ImprovedStopSelection
 #else
         public override bool IsBeta => false;
 #endif
+        protected override ResourceManager LocalizeManager => Localize.ResourceManager;
 
         #endregion
 
