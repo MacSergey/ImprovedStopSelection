@@ -1,10 +1,135 @@
-﻿using ICities;
+﻿using HarmonyLib;
+using ICities;
+using ModsCommon;
+using ModsCommon.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Reflection.Emit;
+using UnityEngine;
 
 namespace ImprovedStopSelection
 {
-    public class Mod : IUserMod
+    public class Mod : BasePatcherMod<Mod>
     {
-        public string Name => "Advanced Stop Selection";
-        public string Description => "Allows to explicitly specify platform when pressing Shift";
+        #region PROPERTIES
+
+        protected override ulong StableWorkshopId => 0;
+        protected override ulong BetaWorkshopId => 0;
+
+        public override string NameRaw => "Advanced Stop Selection Revisited";
+        public override string Description => "Allows to explicitly specify platform when pressing Shift";
+        public override List<ModVersion> Versions => new List<ModVersion>()
+        {
+            new ModVersion(new Version("2.0"), new DateTime()),
+        };
+        protected override Version RequiredGameVersion => new Version(1, 14, 1, 2);
+
+        protected override string IdRaw => nameof(ImprovedStopSelection);
+        protected override List<BaseDependencyInfo> DependencyInfos
+        {
+            get
+            {
+                var infos = base.DependencyInfos;
+
+                var oldLocalSearcher = IdSearcher.Invalid & new UserModNameSearcher("Advanced Stop Selection", BaseMatchSearcher.Option.None);
+                var oldIdSearcher = new IdSearcher(1394468624u);
+                infos.Add(new ConflictDependencyInfo(DependencyState.Unsubscribe, oldLocalSearcher | oldIdSearcher));
+
+                return infos;
+            }
+        }
+
+#if BETA
+        public override bool IsBeta => true;
+#else
+        public override bool IsBeta => false;
+#endif
+
+        #endregion
+
+        protected override void GetSettings(UIHelperBase helper)
+        {
+            var settings = new Settings();
+            settings.OnSettingsUI(helper);
+        }
+
+        #region PATCHER
+
+        protected override bool PatchProcess()
+        {
+            var success = AddTranspiler(typeof(Patcher), nameof(Patcher.TransportToolGetStopPositionTranspiler), typeof(TransportTool), "GetStopPosition");
+            return success;
+        }
+
+        #endregion
+    }
+
+    public static class Patcher
+    {
+        public static IEnumerable<CodeInstruction> TransportToolGetStopPositionTranspiler(ILGenerator generator, IEnumerable<CodeInstruction> instructions, MethodBase original)
+        {
+            var alternateModeLocal = generator.DeclareLocal(typeof(bool));
+            yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Patcher), nameof(Patcher.GetAlternateMode)));
+            yield return new CodeInstruction(OpCodes.Stloc, alternateModeLocal);
+
+            bool segmentNotZeroPassed = false;
+            Label segmentElseLabel = default;
+            bool buildingCheckPatched = false;
+            bool transportLine1CheckPatched = false;
+            bool transportLine2CheckPatched = false;
+            CodeInstruction prevInstruction = null;
+            CodeInstruction prevPrevInstruction = null;
+            var segmentArg = original.GetLDArg("segment");
+            var buildingArg = original.GetLDArg("building");
+            foreach (var instruction in instructions)
+            {
+                yield return instruction;
+
+                if(!segmentNotZeroPassed)
+                {
+                    if(prevPrevInstruction != null && prevPrevInstruction.opcode == OpCodes.Ret && prevInstruction != null && prevInstruction.opcode == segmentArg.opcode && prevInstruction.operand == segmentArg.operand && instruction.opcode == OpCodes.Brfalse)
+                    {
+                        segmentNotZeroPassed = true;
+                        segmentElseLabel = (Label)instruction.operand;
+                    }
+                }
+                else
+                {
+                    if (!transportLine1CheckPatched && prevInstruction != null && prevInstruction.opcode == OpCodes.Ldloc_S && prevInstruction.operand is LocalBuilder local1 && local1.LocalIndex == 12 && instruction.opcode == OpCodes.Brfalse)
+                    {
+                        yield return new CodeInstruction(OpCodes.Ldloc, alternateModeLocal);
+                        yield return new CodeInstruction(OpCodes.Brtrue, instruction.operand);
+                        transportLine1CheckPatched = true;
+                    }
+
+                    if (!transportLine2CheckPatched && prevInstruction != null && prevInstruction.opcode == OpCodes.Ldloc_S && prevInstruction.operand is LocalBuilder local2 && local2.LocalIndex == 13 && instruction.opcode == OpCodes.Brfalse)
+                    {
+                        yield return new CodeInstruction(OpCodes.Ldloc, alternateModeLocal);
+                        yield return new CodeInstruction(OpCodes.Brtrue, instruction.operand);
+                        transportLine1CheckPatched = true;
+                    }
+
+                    if (!buildingCheckPatched && prevInstruction != null && prevInstruction.labels.Contains(segmentElseLabel) && prevInstruction.opcode == buildingArg.opcode && prevInstruction.operand == buildingArg.operand && instruction.opcode == OpCodes.Brfalse)
+                    {
+                        yield return new CodeInstruction(OpCodes.Ldloc, alternateModeLocal);
+                        yield return new CodeInstruction(OpCodes.Brtrue, instruction.operand);
+                        buildingCheckPatched = true;
+                    }
+                }
+
+                prevPrevInstruction = prevInstruction;
+                prevInstruction = instruction;
+            }
+        }
+        private static bool GetAlternateMode()
+        {
+            return Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        }
+    }
+
+    public class Settings : BaseSettings<Mod>
+    {
+
     }
 }
