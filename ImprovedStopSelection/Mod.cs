@@ -19,7 +19,7 @@ namespace ImprovedStopSelection
         protected override ulong BetaWorkshopId => 0;
 
         public override string NameRaw => "Advanced Stop Selection Revisited";
-        public override string Description => "Allows to explicitly specify platform when pressing Shift";
+        public override string Description => !IsBeta ? Localize.Mod_Description : CommonLocalize.Mod_DescriptionBeta;
         public override List<ModVersion> Versions => new List<ModVersion>()
         {
             new ModVersion(new Version("2.0"), new DateTime()),
