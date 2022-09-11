@@ -24,7 +24,7 @@ namespace ImprovedStopSelection
         {
             new ModVersion(new Version("2.0"), new DateTime()),
         };
-        protected override Version RequiredGameVersion => new Version(1, 14, 1, 2);
+        protected override Version RequiredGameVersion => new Version(1, 15, 0, 5);
 
         protected override string IdRaw => nameof(ImprovedStopSelection);
         protected override List<BaseDependencyInfo> DependencyInfos
