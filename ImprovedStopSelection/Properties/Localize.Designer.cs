@@ -61,6 +61,15 @@ namespace ImprovedStopSelection {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Allows to explicitly specify platform when pressing Shift.
+        /// </summary>
+        public static string Mod_Description {
+            get {
+                return ResourceManager.GetString("Mod_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на [UPDATED] Moved to Harmony.
         /// </summary>
         public static string Mod_WhatsNewMessage2_0 {
