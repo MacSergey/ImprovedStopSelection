@@ -1,0 +1,9 @@
+[img]https://i.imgur.com/ys8eGPj.png[/img]
+[HR][/HR] 
+it is revisited version of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1394468624]BloodyPenguin's mod[/url]
+
+[h1]Main changes[/h1]
+[list] 
+[*] Plazas & Promenades DLC support.
+[*] Using Harmony instead of old patching system.
+[/list]

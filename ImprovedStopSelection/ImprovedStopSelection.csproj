@@ -69,10 +69,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Detour\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Properties\Localize.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -88,13 +84,27 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <Import Project="..\ModsCommon\ModShared\ModsCommonShared.projitems" Label="Shared" />
+  <Import Project="..\ModsCommon\PluginsShared\PluginsShared.projitems" Label="Shared" />
+  <Import Project="..\ModsCommon\DependencyShared\DependencyShared.projitems" Label="Shared" />
+  <Import Project="..\ModsCommon\MessageBoxShared\MessageBoxShared.projitems" Label="Shared" />
+  <Import Project="..\ModsCommon\LoggerShared\LoggerShared.projitems" Label="Shared" />
+  <Import Project="..\ModsCommon\SimpleMessageBoxShared\SimpleMessageBoxShared.projitems" Label="Shared" />
+  <Import Project="..\ModsCommon\LocalizeShared\LocalizeShared.projitems" Label="Shared" />
+  <Import Project="..\ModsCommon\SingletonShared\SingletonShared.projitems" Label="Shared" />
+  <Import Project="..\ModsCommon\WhatsNewMessageBoxShared\WhatsNewMessageBoxShared.projitems" Label="Shared" />
+  <Import Project="..\ModsCommon\UIShared\ModsUIShared.projitems" Label="Shared" />
+  <Import Project="..\ModsCommon\AutoLayoutPanelShared\AutoLayoutPanelShared.projitems" Label="Shared" />
+  <Import Project="..\ModsCommon\ColorsShared\ColorsShared.projitems" Label="Shared" />
+  
+
   <PropertyGroup Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Stable Debug'">
-    <!--<WorkshopId></WorkshopId>-->
+    <WorkshopId>2862973068</WorkshopId>
     <Type>Stable</Type>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Beta Release' OR '$(Configuration)' == 'Beta Debug'">
-    <!--<WorkshopId></WorkshopId>-->
+    <WorkshopId>2862973068</WorkshopId>
     <Type>Beta</Type>
   </PropertyGroup>
 
@@ -120,35 +130,11 @@
     <Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(LocalDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
 
-  <Import Project="..\ModsCommon\ModShared\ModsCommonShared.projitems" Label="Shared" />
-
-  <Import Project="..\ModsCommon\PluginsShared\PluginsShared.projitems" Label="Shared" />
-
-  <Import Project="..\ModsCommon\DependencyShared\DependencyShared.projitems" Label="Shared" />
-
-  <Import Project="..\ModsCommon\MessageBoxShared\MessageBoxShared.projitems" Label="Shared" />
-
-  <Import Project="..\ModsCommon\LoggerShared\LoggerShared.projitems" Label="Shared" />
-
-  <Import Project="..\ModsCommon\SimpleMessageBoxShared\SimpleMessageBoxShared.projitems" Label="Shared" />
-
-  <Import Project="..\ModsCommon\LocalizeShared\LocalizeShared.projitems" Label="Shared" />
-
-  <Import Project="..\ModsCommon\SingletonShared\SingletonShared.projitems" Label="Shared" />
-
-  <Import Project="..\ModsCommon\WhatsNewMessageBoxShared\WhatsNewMessageBoxShared.projitems" Label="Shared" />
-
-  <Import Project="..\ModsCommon\UIShared\ModsUIShared.projitems" Label="Shared" />
-
-  <Import Project="..\ModsCommon\AutoLayoutPanelShared\AutoLayoutPanelShared.projitems" Label="Shared" />
-
-  <Import Project="..\ModsCommon\ColorsShared\ColorsShared.projitems" Label="Shared" />
-
-  <!--<Target Name="DeployToWorkshop" AfterTargets="PdbToMdb" Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Beta Release'">
+  <Target Name="DeployToWorkshop" AfterTargets="PdbToMdb" Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Beta Release'">
     <Message Text="Deploy to workshop $(WorkshopDir)" Importance="high" />
     <RemoveDir Directories="$(WorkshopDir)" />
     <Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(WorkshopDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="$(ProjectDir)..\Workshop\PreviewImage$(Type).png" DestinationFiles="$(WorkshopDir)\PreviewImage.png" />
-  </Target>-->
+  </Target>
   
 </Project>

@@ -70,7 +70,8 @@ namespace ImprovedStopSelection {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на [UPDATED] Moved to Harmony.
+        ///   Ищет локализованную строку, похожую на [NEW] Added Plazas &amp; Promenades DLC support.
+        ///[UPDATED] Moved to Harmony..
         /// </summary>
         public static string Mod_WhatsNewMessage2_0 {
             get {

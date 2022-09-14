@@ -15,14 +15,14 @@ namespace ImprovedStopSelection
     {
         #region PROPERTIES
 
-        protected override ulong StableWorkshopId => 0;
+        protected override ulong StableWorkshopId => 2862973068;
         protected override ulong BetaWorkshopId => 0;
 
         public override string NameRaw => "Advanced Stop Selection Revisited";
         public override string Description => !IsBeta ? Localize.Mod_Description : CommonLocalize.Mod_DescriptionBeta;
         public override List<ModVersion> Versions => new List<ModVersion>()
         {
-            new ModVersion(new Version("2.0"), new DateTime()),
+            new ModVersion(new Version("2.0"), new DateTime(2022,9,14)),
         };
         protected override Version RequiredGameVersion => new Version(1, 15, 0, 5);
 

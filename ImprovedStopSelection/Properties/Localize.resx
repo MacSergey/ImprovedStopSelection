@@ -121,6 +121,7 @@
     <value>Allows to explicitly specify platform when pressing Shift</value>
   </data>
   <data name="Mod_WhatsNewMessage2_0" xml:space="preserve">
-    <value>[UPDATED] Moved to Harmony</value>
+    <value>[NEW] Added Plazas &amp; Promenades DLC support.
+[UPDATED] Moved to Harmony.</value>
   </data>
 </root>
