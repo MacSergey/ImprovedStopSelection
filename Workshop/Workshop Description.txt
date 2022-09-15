@@ -1,5 +1,9 @@
 [img]https://i.imgur.com/ys8eGPj.png[/img]
 [HR][/HR] 
+[code][h1]Overview[/h1]
+[list][h2]This mod allow to select certain platform for public transport with pressing Shift[/h2][/list]
+[/code]
+
 it is revisited version of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1394468624]BloodyPenguin's mod[/url]
 
 [h1]Main changes[/h1]
@@ -7,3 +11,13 @@ it is revisited version of [url=https://steamcommunity.com/sharedfiles/filedetai
 [*] Plazas & Promenades DLC support.
 [*] Using Harmony instead of old patching system.
 [/list]
+
+[HR][/HR]
+[h1]Join to discord for discussion and support[/h1]
+[url=https://discord.gg/NnwhuBKMqj][img]https://i.imgur.com/bnDNN2x.png[/img][/url]
+
+[HR][/HR]
+[h1]Source code[/h1]
+[url=https://github.com/MacSergey/ImprovedStopSelection][img]https://i.imgur.com/DczUXYq.png[/img][/url]
+
+[HR][/HR][i]For full transparency: I am an employee at Colossal Order, however this is my personal account and as such all opinions, content and contributions to the community reflect my own views and interests, and are not created nor maintained as part of my job. Like all user generated content, this is not officially supported content and should be used at your own risk.[/i]
