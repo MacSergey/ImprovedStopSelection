@@ -4,12 +4,13 @@ using ModsCommon;
 using ModsCommon.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Resources;
 using UnityEngine;
 
-namespace ImprovedStopSelection
+namespace AdvancedStopSelection
 {
     public class Mod : BasePatcherMod<Mod>
     {
@@ -24,9 +25,9 @@ namespace ImprovedStopSelection
         {
             new ModVersion(new Version("2.0"), new DateTime(2022,9,14)),
         };
-        protected override Version RequiredGameVersion => new Version(1, 15, 0, 5);
+        protected override Version RequiredGameVersion => new Version(1, 15, 0, 7);
 
-        protected override string IdRaw => nameof(ImprovedStopSelection);
+        protected override string IdRaw => nameof(AdvancedStopSelection);
         protected override List<BaseDependencyInfo> DependencyInfos
         {
             get
@@ -55,6 +56,7 @@ namespace ImprovedStopSelection
             var settings = new Settings();
             settings.OnSettingsUI(helper);
         }
+        protected override void SetCulture(CultureInfo culture) => Localize.Culture = culture;
 
         #region PATCHER
 
@@ -132,6 +134,10 @@ namespace ImprovedStopSelection
 
     public class Settings : BaseSettings<Mod>
     {
-
+        protected override void FillSettings()
+        {
+            base.FillSettings();
+            AddNotifications(GeneralTab);
+        }
     }
 }

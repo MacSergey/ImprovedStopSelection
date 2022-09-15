@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ImprovedStopSelection {
+namespace AdvancedStopSelection {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ImprovedStopSelection {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ImprovedStopSelection.Properties.Localize", typeof(Localize).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AdvancedStopSelection.Properties.Localize", typeof(Localize).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
