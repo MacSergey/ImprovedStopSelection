@@ -9,7 +9,6 @@ it is revisited version of [url=https://steamcommunity.com/sharedfiles/filedetai
 [h1]Main changes[/h1]
 [list] 
 [*] Plazas & Promenades DLC support.
-[*] Using Harmony instead of old patching system.
 [/list]
 
 [HR][/HR]
