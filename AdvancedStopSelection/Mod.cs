@@ -47,7 +47,7 @@ namespace AdvancedStopSelection
 #else
         public override bool IsBeta => false;
 #endif
-        protected override ResourceManager LocalizeManager => Localize.ResourceManager;
+        protected override LocalizeManager LocalizeManager => Localize.LocaleManager;
 
         #endregion
 
