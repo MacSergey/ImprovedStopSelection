@@ -14,5 +14,10 @@ namespace AdvancedStopSelection
 		/// [NEW] Added Plazas & Promenades DLC support.
 		/// </summary>
 		public static string Mod_WhatsNewMessage2_0 => LocaleManager.GetString("Mod_WhatsNewMessage2_0", Culture);
+
+		/// <summary>
+		/// [NEW] Added Hubs&Transport support.
+		/// </summary>
+		public static string Mod_WhatsNewMessage2_1 => LocaleManager.GetString("Mod_WhatsNewMessage2_1", Culture);
 	}
 }

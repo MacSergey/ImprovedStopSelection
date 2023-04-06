@@ -2,6 +2,7 @@
 using ICities;
 using ModsCommon;
 using ModsCommon.Utilities;
+using ModsCommon.Settings;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -19,11 +20,12 @@ namespace AdvancedStopSelection
         protected override ulong StableWorkshopId => 2862973068;
         protected override ulong BetaWorkshopId => 0;
 
-        public override string NameRaw => "Advanced Stop Selection Revisited";
+        public override string NameRaw => "Advanced Stop Selection";
         public override string Description => !IsBeta ? Localize.Mod_Description : CommonLocalize.Mod_DescriptionBeta;
         public override List<ModVersion> Versions => new List<ModVersion>()
         {
             new ModVersion(new Version("2.0"), new DateTime(2022,9,14)),
+            new ModVersion(new Version("2.1"), new DateTime(2023,4,6)),
         };
         protected override Version RequiredGameVersion => new Version(1, 16, 1, 2);
 
@@ -36,7 +38,7 @@ namespace AdvancedStopSelection
 
                 var oldLocalSearcher = IdSearcher.Invalid & new UserModNameSearcher("Advanced Stop Selection", BaseMatchSearcher.Option.None);
                 var oldIdSearcher = new IdSearcher(1394468624u);
-                infos.Add(new ConflictDependencyInfo(DependencyState.Unsubscribe, oldLocalSearcher | oldIdSearcher));
+                infos.Add(new ConflictDependencyInfo(DependencyState.Unsubscribe, oldLocalSearcher | oldIdSearcher, "Original Advanced Stop Selection"));
 
                 return infos;
             }
@@ -111,7 +113,7 @@ namespace AdvancedStopSelection
                     {
                         yield return new CodeInstruction(OpCodes.Ldloc, alternateModeLocal);
                         yield return new CodeInstruction(OpCodes.Brtrue, instruction.operand);
-                        transportLine1CheckPatched = true;
+                        transportLine2CheckPatched = true;
                     }
 
                     if (!buildingCheckPatched && prevInstruction != null && prevInstruction.labels.Contains(segmentElseLabel) && prevInstruction.opcode == buildingArg.opcode && prevInstruction.operand == buildingArg.operand && instruction.opcode == OpCodes.Brfalse)

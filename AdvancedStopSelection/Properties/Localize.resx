@@ -124,4 +124,8 @@
     <value>[NEW] Added Plazas &amp; Promenades DLC support.
 [UPDATED] Moved to Harmony.</value>
   </data>
+  <data name="Mod_WhatsNewMessage2_1" xml:space="preserve">
+    <value>[NEW] Added Hubs&amp;Transport support.
+[UPDATED] Updated UI</value>
+  </data>
 </root>

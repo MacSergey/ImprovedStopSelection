@@ -13,13 +13,13 @@
     <Configurations>Beta Debug;Beta Release;Stable Debug;Stable Release</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Stable Debug'">
-    <Version>2.0.0.4</Version>
+  <PropertyGroup>
+    <AssemblyVersion>2.1</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Beta Release' OR '$(Configuration)' == 'Beta Debug'">
-    <Version>2.0.0.0</Version>
-  </PropertyGroup>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+</PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Stable Release|AnyCPU'">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -55,6 +55,14 @@
   <ItemGroup>
     <EmbeddedResource Remove="Properties\Localize.resx" />
     <EmbeddedResource Remove="Properties\Localize.ru-RU.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Properties\PreviewImage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\PreviewImage.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -104,7 +112,6 @@
   <Import Project="..\ModsCommon\SingletonShared\SingletonShared.projitems" Label="Shared" />
   <Import Project="..\ModsCommon\WhatsNewMessageBoxShared\WhatsNewMessageBoxShared.projitems" Label="Shared" />
   <Import Project="..\ModsCommon\UIShared\ModsUIShared.projitems" Label="Shared" />
-  <Import Project="..\ModsCommon\AutoLayoutPanelShared\AutoLayoutPanelShared.projitems" Label="Shared" />
   <Import Project="..\ModsCommon\ColorsShared\ColorsShared.projitems" Label="Shared" />
   <Import Project="..\ModsCommon\LocalizeShared\zh-CN\LocalizeShared.zh-CN.projitems" Label="Shared" />
   <Import Project="..\ModsCommon\LocalizeShared\LocalizeManager\LocalizeManager.projitems" Label="Shared" />
@@ -118,6 +125,7 @@
   <Import Project="..\ModsCommon\LocalizeShared\pl-PL\LocalizeShared.pl-PL.projitems" Label="Shared" />
   <Import Project="..\ModsCommon\LocalizeShared\pt-PT\LocalizeShared.pt-PT.projitems" Label="Shared" />
   <Import Project="..\ModsCommon\LocalizeShared\ru-RU\LocalizeShared.ru-RU.projitems" Label="Shared" />
+  <Import Project="..\ModsCommon\MathExtension\MathExtension.projitems" Label="Shared" />
   
 
   <PropertyGroup Condition="'$(Configuration)' == 'Stable Release' OR '$(Configuration)' == 'Stable Debug'">
