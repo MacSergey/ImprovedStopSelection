@@ -1,4 +1,4 @@
-[img]https://i.imgur.com/a0VrMRr.png[/img]
+[img]https://i.imgur.com/0O9w9Ta.png[/img]
 [HR][/HR] 
 [code][h1]Overview[/h1]
 [list][h2]This mod allow to select certain platform for public transport with pressing Shift[/h2][/list]
