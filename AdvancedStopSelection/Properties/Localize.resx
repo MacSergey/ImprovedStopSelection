@@ -128,4 +128,7 @@
     <value>[NEW] Added Hubs&amp;Transport support.
 [UPDATED] Updated UI</value>
   </data>
+  <data name="Mod_WhatsNewMessage2_2" xml:space="preserve">
+    <value>[UPDATED] Updated required game version to 1.18.1-f3</value>
+  </data>
 </root>

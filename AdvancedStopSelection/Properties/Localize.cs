@@ -19,5 +19,10 @@ namespace AdvancedStopSelection
 		/// [NEW] Added Hubs&Transport support.
 		/// </summary>
 		public static string Mod_WhatsNewMessage2_1 => LocaleManager.GetString("Mod_WhatsNewMessage2_1", Culture);
+
+		/// <summary>
+		/// [UPDATED] Updated required game version to 1.18.1-f3
+		/// </summary>
+		public static string Mod_WhatsNewMessage2_2 => LocaleManager.GetString("Mod_WhatsNewMessage2_2", Culture);
 	}
 }
