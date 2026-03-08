@@ -24,5 +24,10 @@ namespace AdvancedStopSelection
 		/// [UPDATED] Updated required game version to 1.18.1-f3
 		/// </summary>
 		public static string Mod_WhatsNewMessage2_2 => LocaleManager.GetString("Mod_WhatsNewMessage2_2", Culture);
+
+		/// <summary>
+		/// [UPDATED] Updated required game version to 1.21.1-f5
+		/// </summary>
+		public static string Mod_WhatsNewMessage2_3 => LocaleManager.GetString("Mod_WhatsNewMessage2_3", Culture);
 	}
 }

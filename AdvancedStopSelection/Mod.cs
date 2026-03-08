@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Resources;
 using UnityEngine;
 
 namespace AdvancedStopSelection
@@ -24,11 +23,12 @@ namespace AdvancedStopSelection
         public override string Description => !IsBeta ? Localize.Mod_Description : CommonLocalize.Mod_DescriptionBeta;
         public override List<ModVersion> Versions => new List<ModVersion>()
         {
+            new ModVersion(new Version(2, 3), new DateTime(2026, 3, 8)),
             new ModVersion(new Version(2, 2), new DateTime(2024, 10, 26)),
             new ModVersion(new Version(2, 1), new DateTime(2023, 4, 6)),
             new ModVersion(new Version(2, 0), new DateTime(2022, 9, 14)),
         };
-        protected override Version RequiredGameVersion => new Version(1, 18, 1, 3);
+        protected override Version RequiredGameVersion => new Version(1, 21, 1, 5);
 
         protected override string IdRaw => nameof(AdvancedStopSelection);
         protected override List<BaseDependencyInfo> DependencyInfos
