@@ -23,7 +23,7 @@ namespace AdvancedStopSelection
         public override string Description => !IsBeta ? Localize.Mod_Description : CommonLocalize.Mod_DescriptionBeta;
         public override List<ModVersion> Versions => new List<ModVersion>()
         {
-            new ModVersion(new Version(2, 3), new DateTime(2026, 3, 8)),
+            new ModVersion(new Version(2, 3), new DateTime(2026, 3, 11)),
             new ModVersion(new Version(2, 2), new DateTime(2024, 10, 26)),
             new ModVersion(new Version(2, 1), new DateTime(2023, 4, 6)),
             new ModVersion(new Version(2, 0), new DateTime(2022, 9, 14)),
